@@ -1,0 +1,22 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: sans-serif;
+}
+
+body {
+  margin: 4%;
+  background-color: #000000e9;
+  display: flex;
+  justify-content: center;
+}
+
+.box {
+  background-color: #ffffffed;
+  height: 220px;
+  width: 800px;
+  border-radius: 20px;
+  padding: 3%;
+}
