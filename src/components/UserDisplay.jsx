@@ -1,14 +1,22 @@
 import { Fragment } from 'react';
-import styles from './UserDisplay.module.css'
+import UserBox from './UserBox';
 
 const UserDisplay = (props)=> {
+    const deleteHandler = (id)=>{
+        props.onDelUser(id);
+    }
+
     return (
         <Fragment>
             {props.displayData.map((data)=> {
                 return(
-                    <div className={styles.disUser} key={data.key}>
-                        <h1>{data.username} ({data.age})</h1>
-                    </div>
+                    <UserBox
+                        key={data.key}
+                        id={data.key}
+                        username={data.username}
+                        age={data.age}
+                        onDelete={deleteHandler}
+                    />
                 );
             })}
         </Fragment>

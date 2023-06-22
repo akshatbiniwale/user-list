@@ -14,8 +14,15 @@ const App = ()=> {
     });
   }
 
+  const deleteHandler = (userKey)=> {
+    setUserDB(prevUsers => {
+      const updatedUsers = prevUsers.filter(user => user.key !== userKey);
+      return updatedUsers;
+    });
+  }
+
   if(userDB.length > 0){
-    content = <UserDisplay displayData={userDB} />
+    content = <UserDisplay displayData={userDB} onDelUser={deleteHandler} />
   }
 
   return (
