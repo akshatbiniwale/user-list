@@ -1,6 +1,7 @@
 import styles from './index.module.css';
-import UserForm from './components/UserForm';
-import UserDisplay from './components/UserDisplay';
+import UserForm from './components/UserForm/UserForm';
+import UserList from './components/UserList/UserList';
+import UserModal from './components/UserModal/UserModal';
 import { Fragment, useState } from 'react';
 
 const App = ()=> {
@@ -22,7 +23,7 @@ const App = ()=> {
   }
 
   if(userDB.length > 0){
-    content = <UserDisplay displayData={userDB} onDelUser={deleteHandler} />
+    content = <UserList displayData={userDB} onDelUser={deleteHandler} />
   }
 
   return (
@@ -33,6 +34,7 @@ const App = ()=> {
       <div className={styles['display-panel']}>
         {content}
       </div>
+      {/* <UserModal /> */}
     </Fragment>
   );
 }

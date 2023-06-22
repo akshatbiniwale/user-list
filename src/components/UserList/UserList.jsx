@@ -1,7 +1,7 @@
 import { Fragment } from 'react';
-import UserBox from './UserBox';
+import UserBox from '../UserBox/UserBox';
 
-const UserDisplay = (props)=> {
+const UserList = (props)=> {
     const deleteHandler = (id)=>{
         props.onDelUser(id);
     }
@@ -23,4 +23,4 @@ const UserDisplay = (props)=> {
     );
 }
 
-export default UserDisplay;
+export default UserList;
