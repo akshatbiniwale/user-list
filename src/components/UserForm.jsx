@@ -18,19 +18,24 @@ const UserForm = (props)=> {
     const submitHandler = (event)=> {
         event.preventDefault();
 
+        const id = Math.round(Math.random()*1000) + 1;
         const userData = {
+            key: id,
             username: username,
             age: age
         }
 
         props.getData(userData);
+
+        setUsername('');
+        setAge('');
     }
 
     return (
         <form className={styles.form} onSubmit={submitHandler}>
             <div className={styles['input-container']}>
                 <label htmlFor='username'>Username</label>
-                <input type="text" name="username" id="username" onChange={usernameHandler} value={username} />
+                <input type="text" name="username" id="username" autoComplete='off' onChange={usernameHandler} value={username} />
             </div>
             <div className={styles['input-container']}>
                 <label htmlFor='age-years'>Age (Years)</label>
