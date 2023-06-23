@@ -2,30 +2,36 @@ import { useState } from 'react';
 
 import styles from './UserForm.module.css'
 
-const UserForm = (props)=> {
+const UserForm = (props) => {
     const [username, setUsername] = useState('');
 
-    const usernameHandler = (event)=> {
+    const usernameHandler = (event) => {
         setUsername(event.target.value);
     }
 
     const [age, setAge] = useState('');
 
-    const ageHandler = (event)=> {
+    const ageHandler = (event) => {
         setAge(event.target.value);
     }
 
-    const submitHandler = (event)=> {
+    const submitHandler = (event) => {
         event.preventDefault();
 
-        const id = Math.round(Math.random()*1000) + 1;
-        const userData = {
-            key: id,
-            username: username,
-            age: age
-        }
+        if (username === '') {
+            props.invalidUsername();
+        }else if (age < 0) {
+            props.invalidAge();
+        } else {
+            const id = Math.round(Math.random() * 1000) + 1;
+            const userData = {
+                key: id,
+                username: username,
+                age: age
+            }
 
-        props.getData(userData);
+            props.getData(userData);
+        }
 
         setUsername('');
         setAge('');

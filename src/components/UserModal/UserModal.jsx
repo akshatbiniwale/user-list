@@ -1,17 +1,20 @@
 import styles from './UserModal.module.css'
 
-const UserModal = ()=> {
+const UserModal = (props)=> {
+    const closeModalHandler = ()=> {
+        props.closeModal();
+    }
+
     return(
         <div className={styles['modal-box']}>
             <div className={styles.heading}>
                 <h1>Invalid Input</h1>
             </div>
             <div className={styles['text-box']}>
-                <p>Please enter valid name and age (non-empty values)</p>
-                {/* <p>Please enter a valid age (&gt;0).</p> */}
+                <p>{props.errMsg}</p>
             </div>
             <div className={styles['button-box']}>
-                <button>Okay</button>
+                <button onClick={closeModalHandler}>Okay</button>
             </div>
         </div>
     );

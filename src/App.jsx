@@ -8,6 +8,9 @@ const App = ()=> {
   const users = [];
   const [userDB, setUserDB] = useState(users);
   let content = <h1>No users added.</h1>
+  const errUsername = "Please enter valid name and age (non-empty values).";
+  const errAge = "Please enter a valid age (>0)."
+  const [modal, setModal] = useState(null);
 
   const dataHandler = (user)=> {
     setUserDB((prevUsers)=> {
@@ -22,6 +25,18 @@ const App = ()=> {
     });
   }
 
+  const invalidUsernameHandler = ()=> {
+    setModal(<UserModal errMsg={errUsername} closeModal={closeModalHandler} />);
+  }
+
+  const invalidAgeHandler = ()=> {
+    setModal(<UserModal errMsg={errAge} closeModal={closeModalHandler} />);
+  }
+
+  const closeModalHandler = ()=> {
+    setModal(null);
+  }
+
   if(userDB.length > 0){
     content = <UserList displayData={userDB} onDelUser={deleteHandler} />
   }
@@ -29,12 +44,16 @@ const App = ()=> {
   return (
     <Fragment>
       <div className={styles.box}>
-        <UserForm getData={dataHandler}/>
+        <UserForm 
+          getData={dataHandler} 
+          invalidUsername={invalidUsernameHandler} 
+          invalidAge={invalidAgeHandler}
+        />
       </div>
       <div className={styles['display-panel']}>
         {content}
       </div>
-      {/* <UserModal /> */}
+      {modal}
     </Fragment>
   );
 }
