@@ -1,3 +1,15 @@
+.backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    background: rgba(0, 0, 0, 0.75);
+    display: flex;
+    justify-content: center;
+}
+
 .modal-box{
     background-color: #e4e4e4;
     border-radius: 20px;
